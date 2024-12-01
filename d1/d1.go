@@ -20,6 +20,7 @@ func main(){
     var left_list []int
     var right_list []int
     var diff int
+    var similarities int
 
     scanner := bufio.NewScanner(file)
     for scanner.Scan() {
@@ -34,8 +35,7 @@ func main(){
     sort.Sort(sort.IntSlice(left_list))
     sort.Sort(sort.IntSlice(right_list))
 
-    for i, _ := range left_list {
-        left := left_list[i]
+    for i, left := range left_list {
         right := right_list[i]
 
         if left > right {
@@ -43,9 +43,20 @@ func main(){
         } else {
             diff += right - left
         }
+
+        num_count := 0
+
+        for _, right_num := range right_list {
+            if left == right_num {
+                num_count += 1
+            }
+        }
+        similarities += left * num_count
     }
 
+
     fmt.Println(diff)
+    fmt.Println(similarities)
 }
 
 func convert_num(str string) int {
