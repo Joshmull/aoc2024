@@ -23,14 +23,16 @@ func main(){
     var similarities int
 
     scanner := bufio.NewScanner(file)
+    if err := scanner.Err(); err != nil {
+        log.Fatal(err)
+    }
+
     for scanner.Scan() {
         string := strings.Split(scanner.Text(), "   ")
         left_list = append(left_list, convert_num(string[0]))
         right_list = append(right_list, convert_num(string[1]))
     }
-    if err := scanner.Err(); err != nil {
-        log.Fatal(err)
-    }
+    
 
     sort.Sort(sort.IntSlice(left_list))
     sort.Sort(sort.IntSlice(right_list))
