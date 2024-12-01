@@ -32,7 +32,6 @@ func main(){
         left_list = append(left_list, convert_num(string[0]))
         right_list = append(right_list, convert_num(string[1]))
     }
-    
 
     sort.Sort(sort.IntSlice(left_list))
     sort.Sort(sort.IntSlice(right_list))
@@ -55,7 +54,6 @@ func main(){
         }
         similarities += left * num_count
     }
-
 
     fmt.Println(diff)
     fmt.Println(similarities)
