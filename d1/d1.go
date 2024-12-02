@@ -64,7 +64,6 @@ func convert_num(str string) int {
     if err != nil {
         fmt.Println(err)
     }
-
     return num
 }
 
