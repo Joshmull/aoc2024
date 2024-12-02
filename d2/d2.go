@@ -10,7 +10,7 @@ import (
 )
 
 func main(){
-    file, err := os.Open("input")
+    file, err := os.Open("test")
     if err != nil {
         log.Fatal(err)
     }
@@ -33,7 +33,7 @@ func main(){
         }
     }
 
-    println(safe_count)
+    fmt.Printf("safe count: %d", safe_count)
 }
 
 func is_safe(list []string) bool {
@@ -55,18 +55,20 @@ func is_safe(list []string) bool {
                 diff = num2 - num1
             }
 
+            if increasing == true && decreasing == true {
+                fmt.Println(num1)
+                return false
+            }
+
             if diff > 3 || diff == 0 {
+                fmt.Println(num1)
                 return false
             }
 
         }
     }
 
-    if increasing == true && decreasing == true {
-                return false
-    } else {
-        return true
-    }
+    return true
 }
 
 func convert_num(str string) int {
